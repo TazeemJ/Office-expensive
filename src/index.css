@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.navbar-brand {
+  margin-left: 50px;
+  font-weight: 700;
+}
+.search-container {
+  align-items: center;
+}
+
+#search,
+#search:hover {
+  font-weight: 800 !important;
+  background: #000;
+  padding: 10px;
+  color: #fff;
+  border-radius: 5px;
+}
+#search {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.search-container input {
+  border: 1px solid #c4bbbb !important;
+  outline: none;
+  padding: 8px 10px;
+  border-radius: 5px;
+}
+.search-container button,
+.search-container button:hover {
+  background-color: #000;
+}
+.displaynone {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  top: -10%;
+  width: 100%;
+}
+.displayactive,
+.displaynone {
+  transition: opacity 0.4s, height 0.4s, top 0.4s;
+  position: absolute;
+}
+body:has(.displayactive) {
+  overflow: hidden;
+}
+.displayactive {
+  opacity: 1;
+  height: 100%;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+.displayactive > div {
+  overflow: none;
+}
+
+.btnActive {
+  background-color: #bb2d3b !important;
+}
+#edi {
+  color: #3498db;
+}
+#del {
+  color: #e74c3c;
+}
+.DataNotFoundSvg svg {
+  width: 40% !important;
+}
