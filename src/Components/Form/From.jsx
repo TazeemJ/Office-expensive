@@ -29,8 +29,11 @@ const Form = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let uniqueId = Math.floor(Math.random() * 56600 + 1);
-    let newData = [...MyData, { ...formData, uniqueId, currentDate }];
+    console.log("called!");
+    const uniqueId = Math.floor(Math.random() * 56600 + 1);
+    const safeMyData = Array.isArray(MyData) ? MyData : [];
+    const AllData = { ...formData, uniqueId, currentDate };
+    const newData = [...safeMyData, AllData];
     setMyData(newData);
     localStorage.setItem("MyData", JSON.stringify(newData));
     setFromDisplay(true);
@@ -71,7 +74,7 @@ const Form = ({
       <div className="w-100   ">
         <div className="formshow w-100">
           <form
-            onSubmit={formData.EdiBtnText ? handleUpdate : handleSubmit}
+            onSubmit={formData?.EdiBtnText ? handleUpdate : handleSubmit}
             className="col-4 mx-auto py-3 bg-white rounded-xl"
             id="form"
           >
@@ -206,10 +209,10 @@ const Form = ({
             <button
               type="submit"
               className={`btn ${
-                formData.EdiBtnText ? "bg-danger" : "bg-primary"
+                formData?.EdiBtnText ? "bg-danger" : "bg-primary"
               } text-white ms-3 mt-3`}
             >
-              {formData.EdiBtnText ? "Update" : "Save"}
+              {formData?.EdiBtnText ? "Update" : "Save"}
             </button>
           </form>
         </div>
